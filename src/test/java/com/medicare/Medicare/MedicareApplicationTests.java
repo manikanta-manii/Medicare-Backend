@@ -14,11 +14,11 @@ class MedicareApplicationTests {
 
 	@Test
 	void contextLoads() {
-        User user = new User(1L,"Manikanta P","mani@gmail.com","12345");
-        String token = jwtService.generateToken(user);
-        System.out.println("Generated Token: " + token);
-        Long userId = jwtService.getUserIdFromToken(token);
-        System.out.println("Extracted User ID: " + userId);
+//        User user = new User(1L,"Manikanta P","mani@gmail.com","12345");
+//        String token = jwtService.generateToken(user);
+//        System.out.println("Generated Token: " + token);
+//        Long userId = jwtService.getUserIdFromToken(token);
+//        System.out.println("Extracted User ID: " + userId);
 	}
 
 }

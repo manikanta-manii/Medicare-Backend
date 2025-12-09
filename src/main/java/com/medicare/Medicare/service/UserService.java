@@ -29,7 +29,7 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username)
+        return (UserDetails) userRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + username));
     }
 
@@ -39,7 +39,7 @@ public class UserService implements UserDetailsService {
             throw new RuntimeException("User already exists with email: " + signUpDto.getEmail());
         }
         User toCreate = modelMapper.map(signUpDto, User.class);
-        toCreate.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
+        toCreate.setPasswordHash(passwordEncoder.encode(signUpDto.getPassword()));
         User created = userRepository.save(toCreate);
         return modelMapper.map(created, UserDto.class);
     }
